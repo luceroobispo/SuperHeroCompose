@@ -68,16 +68,10 @@ fun Home() {
         mutableStateOf(heroData.heroes)
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black) // Fondo negro para toda la pantalla
-    ) {
-        Scaffold { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
-                //HeroSearch(name, heroes)
-                HeroList(heroes = heroes)
-            }
+    Scaffold { paddingValues ->
+        Column(modifier = Modifier.padding(paddingValues)) {
+           //HeroSearch(name, heroes)
+           HeroList(heroes = heroes)
         }
     }
 }
