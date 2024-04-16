@@ -63,6 +63,8 @@ fun HeroList(heroes: MutableState<List<Hero>>) {
 
 @Composable
 fun HeroCard(hero: Hero) {
+    val isFavorited = remember { mutableStateOf(false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,22 +78,22 @@ fun HeroCard(hero: Hero) {
                     .weight(1f)
                     .padding(start = 8.dp)
             ) {
-                Text(text= hero.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                Text(text= hero.biography.fullName, fontSize = 16.sp)
+                Text(text = hero.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(text = hero.biography.fullName, fontSize = 16.sp)
             }
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = { isFavorited.value = !isFavorited.value },
                 modifier = Modifier.size(48.dp)
             ) {
                 Icon(
                     Icons.Filled.Favorite,
-                    contentDescription = "Favorite"
+                    contentDescription = "Favorite",
+                    tint = if (isFavorited.value) Color.Red else Color.Black
                 )
             }
         }
     }
 }
-
 
 @Composable
 fun HeroImage(url: String) {
